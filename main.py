@@ -38,6 +38,14 @@ def get_weather_data(latitude, longitude, start_date, end_date):
     return df
 
 
+def creat_table(city_name, df):
+    plt.plot(df['date'], df['temp'])
+    plt.xlabel('Даты')
+    plt.ylabel('Температуры (°C)')
+    plt.title(f'График температуры в {city_name}')
+    plt.show()
+
+
 def main():
     country_code = "BY"
     city_name = "Minsk"
@@ -46,13 +54,4 @@ def main():
 
     latitude, longitude = get_coordinates(city_name, country_code)
     df = get_weather_data(latitude, longitude, start_date, end_date)
-    plt.plot(df['date'], df['temp'])
-    plt.xlabel('Даты')
-    plt.ylabel('Температуры (°C)')
-    plt.title(f'График температуры в {city_name}')
-    plt.show()
-    
-    print(df)
-
-if __name__ == "__main__":
-    main()
+    creat_table(city_name, df)
